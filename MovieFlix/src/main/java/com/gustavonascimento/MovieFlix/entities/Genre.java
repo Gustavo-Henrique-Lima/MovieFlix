@@ -1,12 +1,15 @@
 package com.gustavonascimento.MovieFlix.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Table(name = "tb_genre")
@@ -19,6 +22,8 @@ public class Genre implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
+	@OneToMany(mappedBy = "genre")
+	private Set<Movie> movies = new HashSet<>();
 
 	public Genre() {
 	}
@@ -47,6 +52,10 @@ public class Genre implements Serializable {
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
+	}
+
+	public Set<Movie> getMovies() {
+		return movies;
 	}
 
 	@Override
