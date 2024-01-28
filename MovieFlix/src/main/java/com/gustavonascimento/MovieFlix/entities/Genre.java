@@ -1,14 +1,9 @@
 package com.gustavonascimento.MovieFlix.entities;
 
 import java.io.Serializable;
-<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.List;
-=======
-import java.util.HashSet;
->>>>>>> 8a83f0c8ee67c41bfbe9fa0d1efb01d1e70a04b2
 import java.util.Objects;
-import java.util.Set;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,11 +23,7 @@ public class Genre implements Serializable {
 	private Long id;
 	private String name;
 	@OneToMany(mappedBy = "genre")
-<<<<<<< HEAD
 	private List<Movie> movies = new ArrayList<>();
-=======
-	private Set<Movie> movies = new HashSet<>();
->>>>>>> 8a83f0c8ee67c41bfbe9fa0d1efb01d1e70a04b2
 
 	public Genre() {
 	}
@@ -63,11 +54,7 @@ public class Genre implements Serializable {
 		return Objects.hash(id);
 	}
 
-<<<<<<< HEAD
 	public List<Movie> getMovies() {
-=======
-	public Set<Movie> getMovies() {
->>>>>>> 8a83f0c8ee67c41bfbe9fa0d1efb01d1e70a04b2
 		return movies;
 	}
 

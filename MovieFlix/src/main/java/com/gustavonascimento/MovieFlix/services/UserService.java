@@ -1,7 +1,5 @@
 package com.gustavonascimento.MovieFlix.services;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -9,7 +7,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.gustavonascimento.MovieFlix.services.exceptions.ResourceNotFoundException;
 import com.gustavonascimento.MovieFlix.entities.User;
 import com.gustavonascimento.MovieFlix.entities.dto.UserDTO;
 import com.gustavonascimento.MovieFlix.repositories.UserRepository;
@@ -19,11 +16,13 @@ public class UserService implements UserDetailsService {
 
 	@Autowired
 	private UserRepository repository;
+	
+	@Autowired
+	private AuthService authService;
 
 	@Transactional(readOnly = true)
-	public UserDTO findCurrentUser(Long id) {
-		Optional<User> obj = repository.findById(id);
-		User entity = obj.orElseThrow(() -> new ResourceNotFoundException("Usuário não encontrado"));
+	public UserDTO findCurrentUser() {
+		User entity = authService.getCurrentUser();
 		return new UserDTO(entity);
 	}
 

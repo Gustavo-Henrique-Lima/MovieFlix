@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Table(name = "tb_review")
@@ -19,13 +21,21 @@ public class Review implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String text;
+	@ManyToOne
+	@JoinColumn(name = "movie_id")
+	private Movie movie;
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user;
 
 	public Review() {
 	}
 
-	public Review(Long id, String text) {
+	public Review(Long id, String text, Movie movie, User user) {
 		this.id = id;
 		this.text = text;
+		this.movie = movie;
+		this.user = user;
 	}
 
 	public Long getId() {
@@ -42,6 +52,22 @@ public class Review implements Serializable {
 
 	public void setText(String text) {
 		this.text = text;
+	}
+
+	public Movie getMovie() {
+		return movie;
+	}
+
+	public void setMovie(Movie movie) {
+		this.movie = movie;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	@Override
