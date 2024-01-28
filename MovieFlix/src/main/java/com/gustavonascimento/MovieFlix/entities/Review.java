@@ -1,36 +1,31 @@
 package com.gustavonascimento.MovieFlix.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
-@Table(name = "tb_genre")
+@Table(name = "tb_review")
 @Entity
-public class Genre implements Serializable {
+public class Review implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String name;
-	@OneToMany(mappedBy = "genre")
-	private List<Movie> movies = new ArrayList<>();
+	private String text;
 
-	public Genre() {
+	public Review() {
 	}
 
-	public Genre(Long id, String name) {
+	public Review(Long id, String text) {
 		this.id = id;
-		this.name = name;
+		this.text = text;
 	}
 
 	public Long getId() {
@@ -41,21 +36,17 @@ public class Genre implements Serializable {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getText() {
+		return text;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setText(String text) {
+		this.text = text;
 	}
 
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
-	}
-
-	public List<Movie> getMovies() {
-		return movies;
 	}
 
 	@Override
@@ -66,7 +57,7 @@ public class Genre implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Genre other = (Genre) obj;
+		Review other = (Review) obj;
 		return Objects.equals(id, other.id);
 	}
 
