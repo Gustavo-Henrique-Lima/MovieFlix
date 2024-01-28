@@ -3,6 +3,7 @@ package com.gustavonascimento.MovieFlix.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
+<<<<<<< HEAD
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,6 +14,11 @@ import jakarta.persistence.Table;
 
 @Table(name = "tb_movie")
 @Entity
+=======
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+
+>>>>>>> 8a83f0c8ee67c41bfbe9fa0d1efb01d1e70a04b2
 public class Movie implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -32,7 +38,11 @@ public class Movie implements Serializable {
 	public Movie() {
 	}
 
+<<<<<<< HEAD
 	public Movie(Long id, String title, Integer year, String subTitle, String imgUrl, String synopsis, Genre genre) {
+=======
+	public Movie(Long id, String title, String subTitle, Integer year, String imgUrl, String synopsis, Genre genre) {
+>>>>>>> 8a83f0c8ee67c41bfbe9fa0d1efb01d1e70a04b2
 		this.id = id;
 		this.title = title;
 		this.year = year;
