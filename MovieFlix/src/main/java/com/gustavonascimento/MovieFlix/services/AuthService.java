@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.gustavonascimento.MovieFlix.entities.User;
 import com.gustavonascimento.MovieFlix.repositories.UserRepository;
-import com.gustavonascimento.MovieFlix.services.exceptions.ForbiddenException;
 import com.gustavonascimento.MovieFlix.services.exceptions.UnauthorizedException;
 
 @Service
